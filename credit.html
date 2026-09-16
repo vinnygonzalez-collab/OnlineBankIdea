@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cha-Ching Credit Card Application</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+    
+    <main> 
+        <h1>Secure Credit Card Application</h1>
+        <p>Please complete the form belowto apply for your new Cha-Ching Credit Card.</p>
+
+        <!-- Secure form submission via POST -->
+         <form id="credit-card-application" autocomplete="on">
+
+            <!-- SECTION 1: Personal Information -->
+             <fieldset>
+                <legend>Personal Information</legend>
+                       
+                    <div>
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="firstName" required autocomplete="given-name">
+                    </div>
+
+                    <div>
+                    <label for="middle-name">Middle Name:</label>
+                    <input type="text" id="middle-name" name="middleName" required autocomplete="given-name">
+                    </div>
+
+                    <div>
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" id="last-name" name="lastName" required autocomplete="family-name">
+                    </div>
+
+                    <div>
+                        <label for="dob">Date of Birth:</label>
+                        <input type="text" id="dob" name="dob" required>
+                    </div>
+
+                    <div>
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required autocomplete="tel">
+                    </div>
+
+                    <div>
+                        <label for="ssn">Social Security Number:</label>
+                        <input type="password" id="ssn" name="ssn" required placeholder="XXX-XX-XXXX" pattern="\d{3}-\d{2}-\d{4}">
+                    </div>
+                </fieldset>
+
+                <!-- SECTION 2: Residential Address -->
+                <fieldset>
+                    <legend>Residential Address</legend>
+
+                    <div>
+                        <label for="address">Street Address:</label>
+                        <input type="text" id="address" name="address" required autocomplete="street-address">
+                    </div>
+
+                    <div>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required autocomplete="address-level2">
+                    </div>
+
+                    <div>
+                        <label for="state">State/Province:</label>
+                        <input type="text" id="state" name="state" required autocomplete="address-level1">
+                    </div>
+                    </fieldset>
+
+                    <div>
+                        <label for="zip">Zip Code:</label>
+                        <input type="text" id="zip" name="zip" required autocomplete="postal-code">
+                    </div>
+
+                    <!-- SECTION 3: Financial Information -->
+                    <fieldset>
+                        <legend>Financial Information</legend>
+
+
+                        <div>
+                            <label for="employment">Employment Status:</label>
+                            <select id="employment" name="employmentStatus" required>
+                                <option value="" disabled selected>Select your status</option>
+                            <option value="employed">Employed Full-Time/Part-Time</option>
+                            <option value="self-employed">Self-Employed</option>
+                            <option value="unemployed">Unemployed</option>
+                            <option value="retired">Retired</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="income">Annual Gross Income ($):</label>
+                        <input type="number" id="income" name="annualIncome" min="0" required placeholder="e.g 50000">
+                    </div>
+                    
+                    <div>
+                        <label for="housing">Housing Status:
+                        </label>
+                        <select id="housing" name="housingStatus" required>
+                            <option value="" disabled selected>Select housing status</option>
+                            <option value="own">Own</option>
+                            <option value="rent">Rent</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="monthly-housing">Monthly Housing Payment ($):</label>
+                        <input type="number" id="monthly-housing" name="monthlyHousingPayment" min="0" required>
+        </div>                          
+    </fieldset>    
+    
+    <!-- SECTION 4: Card Preferences -->
+    <fieldset>
+        <legend>Card Preferences</legend>
+
+        <div>
+            <label for="card-type">Select Your Desired Credit Card</label>
+            <select id="card-type" name="cardType" required>
+                <option value="" disabled selected>Select a card tier</option>
+                <option value="rewards">Cashback Rewards Card</option>
+                <option value="travel">Global Travel Elite Card</option>
+                <option value="secured">Secured Starter Card</option>
+            </select>
+        </div>
+ </fieldset>
+
+    <!-- SECTION 5: Terms and Conditions -->
+    <fieldset>
+        <legend>Terms & Consent</legend>
+
+        <div>
+            <input type="checkbox" id="terms" name="termsConsent" value="agreed" required>
+            <label for="terms">I agree to the Cha-Ching International Bank's terms, condition, and authorize a credit check check review.</label>
+
+        </div>
+ </fieldset>
+
+    <!-- Form Submission Button -->
+        <div class="form-submission">
+            <button type="submit">Submit Secure Application</button>
+             </div>
+        </form>
+        <p id="application-confirmation" role="status" hidden></p>
+    </main>
+
+    <script>
+        const applicationForm = document.getElementById('credit-card-application');
+        const confirmationMessage = document.getElementById('application-confirmation');
+
+        applicationForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const firstName = document.getElementById('first-name').value.trim();
+            confirmationMessage.textContent = `Thank you, ${firstName}! Your credit card application has been submitted successfully. We will contact you with the next steps.`;
+            confirmationMessage.hidden = false;
+            alert('Your credit card application has been submitted successfully. Please check your email for further steps in the signup process.');
+            applicationForm.reset();
+        });
+    </script>
+</body>
+</html>

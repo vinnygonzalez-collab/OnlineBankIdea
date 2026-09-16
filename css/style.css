@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    background-color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+}
+
+body {
+    background-color: #d3d3d3;
+}
+
+.form-step:not(.active) {
+    display: none;
+}

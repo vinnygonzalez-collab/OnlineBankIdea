@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Bank Signup</title>
+    <style>
+        /* Form Container Styling */
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Hide the default square checkbox */
+        .terms-container input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom container for alignment */
+        .terms-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            font-size: 14px;
+            -webkit-user-select: none;
+            user-select: none;
+            margin-bottom: 20px;
+        }
+
+        /* The custom circular checkmark */
+        .checkmark {
+            position: relative;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%; /* Makes it a circle */
+            margin-right: 10px;
+            transition: all 0.2s ease;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .terms-container input:checked ~ .checkmark {
+            background-color: #004b87;
+            border-color: #004b87;
+        }
+
+        /* Create the checkmark indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .terms-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark indicator (White L-shape) */
+        .terms-container .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 5px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Submit Button Syling */
+        .submit-btn {
+            background-color: #004b87;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main2.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+
+    <h2>Open Your Secure Bank Account</h2>
+
+    <form id="bankSignupForm">
+
+    <fieldset class="form-step active" id="step1">
+        <legend>Step 1: Personal Identity</legend>
+
+        <label for="fullName">Full Legal Name</label>
+        <input type="text" id="fullName" required>
+        <span class="error" id="nameError"></span>
+
+        <br>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" required>
+        <span class="error" id="emailError"></span>
+
+        <br>
+        <label for="ssn">Social Security Number:</label>
+        <input type="text" id="ssn" name="ssn" inputmode="numeric"
+            autocomplete="off" placeholder="XXX-XX-XXXX"
+            pattern="\d{3}-\d{2}-\d{4}" maxlength="11" required>
+        <span class="error" id="ssnError"></span>
+
+        <br>
+        <label for="billingAddress">Home/Billing Address:</label>
+        <textarea id="billingAddress" name="billingAddress"
+            autocomplete="street-address" rows="3" required></textarea>
+        <span class="error" id="addressError"></span>
+
+        <br>
+        <button type="button" onclick="nextStep(1, 2)">Next</button>
+    </fieldset>
+
+    <!-- Step 2: Security & Account Details -->
+     <fieldset class="form-step" id="step2">
+        <legend>Step 2: Account Security</legend>
+
+        <label for="accountType">Account Type:</label>
+        <select id="accountType" required>
+        <option value="">Select an option</option>
+        <option value="Checking">Open a Checking Account</option>
+        <option value="Savings">Open a Savings Account</option>
+        <option value="Checking and Savings">Open Both Checking and Savings Accounts</option>
+
+    </select>
+    <span class="error" id="accountTypeError"></span>
+     
+
+     <br>
+     <label for="password">Create a Password</label>
+     <!-- Using strict pattern for bank-grade security -->
+    <input type="password" id="password" required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+     placeholder="Min 8 chars, 1 Uppercase, 1 Number">
+<span class="error" id="passwordError"></span>
+
+    <!-- Terms and Conditions Section -->
+    <label class="terms-container">
+        <input type="checkbox" id="termsCheckbox" required>
+        <span class="checkmark"></span>
+        I accept the <a href="terms.html" target="_blank">Terms and Conditions</a> and Privacy Policy.
+    </label>
+
+<br>
+<button type="button" onclick="prevStep(2,1)">Back</button>
+<button type="submit">Submit Application</button>
+</fieldset>
+</form>
+<p id="bank-application-confirmation" role="status" hidden></p>
+</body>
+</html>
