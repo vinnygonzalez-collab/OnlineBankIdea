@@ -1,1 +1,1 @@
-This is an idea O made about an online international bank. 
+This is an idea I made about an online international bank. 
