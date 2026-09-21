@@ -1,1 +1,4 @@
-This is an idea I made about an online international bank. 
+#onlinebankingidea
+
+An idea I created for an online bank.
+Check out the bank's website here [https://chachingbank.netlify.app/]
